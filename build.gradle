@@ -2,9 +2,11 @@
 
 buildscript {
     repositories {
+        // 在项目中直接饮用jcenter上的开源项目
         jcenter()
     }
     dependencies {
+        // 声明gradle插件
         classpath 'com.android.tools.build:gradle:2.3.0'
 
         // NOTE: Do not place your application dependencies here; they belong

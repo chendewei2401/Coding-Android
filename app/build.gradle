@@ -1,24 +1,34 @@
+// 应用一个插件，application或者library；其中application为应用程序模块，可直接运行
+// library为库模块，需要依附于别的应用程序
 apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
     buildToolsVersion "25.0.0"
     defaultConfig {
+        // 项目包名，可调整
         applicationId "com.cmcc.chendw.android"
+        // 最低兼容版本，library的最低兼容需要比app低，才能被集成
         minSdkVersion 16
+        // 表示在此版本充分测试，也可以认为最高兼容版本
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        // 包括release和debug，as直接运行生成的apk为debug版本
         release {
+            // 是否对代码进行混淆，false为不混淆
             minifyEnabled false
+            // proguard-android.txt在SDK目录下，为所有项目的混淆规则
+            // proguard-rules.pro为本项目的混淆规则
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
+// AS有三种依赖：本地依赖、库依赖和远程依赖，本地依赖可以对本地的jar包或者目录
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
